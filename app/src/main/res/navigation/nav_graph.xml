@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/itemDetailFragment">
+
+    <fragment
+        android:id="@+id/itemDetailFragment"
+        android:name="com.example.xlmp13.ui.ItemDetailFragment"
+        android:label="All Items">
+        <action
+            android:id="@+id/action_itemDetailFragment_to_addItemFragment"
+            app:destination="@id/addItemFragment" />
+        <action
+            android:id="@+id/action_itemDetailFragment_to_sellEditItemFragment"
+            app:destination="@id/sellEditItemFragment"
+            app:enterAnim="@android:anim/slide_in_right"
+            app:exitAnim="@android:anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/addItemFragment"
+        android:name="com.example.xlmp13.ui.AddItemFragment"
+        android:label="Add New Item">
+        <action
+            android:id="@+id/action_addItemFragment_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment"
+            app:popUpTo="@id/itemDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleItemFragment"
+        android:name="com.example.xlmp13.ui.SingleItemFragment"
+        android:label="Edit">
+        <argument
+            android:name="itemId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/sellEditItemFragment"
+        android:name="com.example.xlmp13.ui.SellEditItemFragment"
+        android:label="Item Id : {itemId}" >
+        <argument
+            android:name="itemId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_sellEditItemFragment_to_singleItemFragment"
+            app:destination="@id/singleItemFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+</navigation>
